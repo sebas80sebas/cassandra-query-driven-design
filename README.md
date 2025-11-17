@@ -230,7 +230,7 @@ WHERE agerange = '18-29' AND pclass = 1 AND survived = 1;
 ├── docs/
 │   ├── design.md
 │   ├── theoretical_doubts.md
-│   └── architecture_diagram.png
+│   └── architecture_diagram.svg
 │
 ├── requirements.txt
 ├── README.md
