@@ -5,7 +5,7 @@
 
 A scalable NoSQL data model implementation using Apache Cassandra to analyze Titanic passenger data. This project demonstrates query-driven design principles, partitioning strategies, and efficient data modeling for distributed systems.
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Overview](#overview)
 - [Features](#features)
@@ -77,7 +77,7 @@ pip install -r requirements.txt
 cassandra -f
 ```
 
-## 💻 Usage
+## Usage
 
 ### Step 1: Preprocess Data
 
@@ -105,7 +105,7 @@ cqlsh -f scripts/queries.cql
 cqlsh -f scripts/verification.cql
 ```
 
-## 📊 Data Model
+## Data Model
 
 ### Tables Overview
 
@@ -225,7 +225,7 @@ WHERE agerange = '18-29' AND pclass = 1 AND survived = 1;
 │   └── preprocessing.py
 │
 ├── scripts/
-│   ├── script.cql
+│   └── script.cql
 │
 ├── docs/
 │   ├── design.md
