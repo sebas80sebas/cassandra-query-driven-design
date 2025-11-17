@@ -208,7 +208,7 @@ WHERE agerange = '18-29' AND pclass = 1 AND survived = 1;
 ## Project Structure
 
 ```
-titanic-cassandra-model/
+/
 ├── data/
 │   ├── raw/
 │   │   ├── titanic_passager_info_10000.csv
@@ -220,18 +220,18 @@ titanic-cassandra-model/
 │       ├── passengers_by_age_range.csv
 │       ├── port_survival_analysis.csv
 │       └── class_age_survival_analysis.csv
+│
 ├── preprocessing/
-│   └── preprocess_titanic.py
+│   └── preprocessing.py
+│
 ├── scripts/
-│   ├── setup_tables.cql
-│   ├── queries.cql
-│   └── verification.cql
+│   ├── script.cql
+│
 ├── docs/
-│   ├── design_rationale.md
-│   ├── performance_analysis.md
+│   ├── design.md
+│   ├── theoretical_doubts.md
 │   └── architecture_diagram.png
-├── tests/
-│   └── test_queries.py
+│
 ├── requirements.txt
 ├── README.md
 └── LICENSE
