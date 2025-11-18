@@ -82,7 +82,7 @@ cassandra -f
 ### Step 1: Preprocess Data
 
 ```bash
-python preprocessing/preprocess_titanic.py
+python preprocessing/preprocessing.py
 ```
 
 This generates 6 CSV files optimized for each Cassandra table.
