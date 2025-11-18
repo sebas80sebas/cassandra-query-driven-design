@@ -1,12 +1,18 @@
 import pandas as pd
 import numpy as np
+import os
+
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))  # sube un nivel
+DATA_DIR = os.path.join(BASE_DIR, "data", "raw")
+PROCESSED_DIR = os.path.join(BASE_DIR, "data", "processed")
 
 # Cargar los datasets
-passenger_info = pd.read_csv('titanic_passager_info_10000.csv')
-passenger_trip = pd.read_csv('titanic_passager_trip_10000.csv')
+passenger_info = pd.read_csv(os.path.join(DATA_DIR, "titanic_passager_info_10000.csv"))
+passenger_trip = pd.read_csv(os.path.join(DATA_DIR, "titanic_passager_trip_10000.csv"))
 
 # Unir los datasets por PassengerId
 df = pd.merge(passenger_info, passenger_trip, on='PassengerId')
+
 
 # Limpieza de datos
 # 1. Eliminar filas sin PassengerId
@@ -67,7 +73,7 @@ print(df['Survived'].value_counts())
 # Partition key: Pclass, Survived
 # Clustering key: PassengerId
 survivors_by_class = df[['PassengerId', 'Pclass', 'Survived', 'Name', 'Sex', 'Age']].copy()
-survivors_by_class.to_csv('survivors_by_class.csv', index=False)
+survivors_by_class.to_csv(os.path.join(PROCESSED_DIR, 'survivors_by_class.csv'), index=False)
 print(f"\nTabla survivors_by_class: {len(survivors_by_class)} registros")
 
 # TABLA 2: passengers_by_port_age
@@ -75,7 +81,7 @@ print(f"\nTabla survivors_by_class: {len(survivors_by_class)} registros")
 # Partition key: Embarked
 # Clustering key: Age, PassengerId
 passengers_by_port_age = df[['Embarked', 'Age', 'PassengerId', 'Name', 'Sex', 'Pclass', 'Survived']].copy()
-passengers_by_port_age.to_csv('passengers_by_port_age.csv', index=False)
+passengers_by_port_age.to_csv(os.path.join(PROCESSED_DIR, 'passengers_by_port_age.csv'), index=False)
 print(f"Tabla passengers_by_port_age: {len(passengers_by_port_age)} registros")
 
 # TABLA 3: women_survivors_by_class
@@ -83,7 +89,7 @@ print(f"Tabla passengers_by_port_age: {len(passengers_by_port_age)} registros")
 # Partition key: Pclass, Sex, Survived
 # Clustering key: PassengerId
 women_survivors = df[['Pclass', 'Sex', 'Survived', 'PassengerId', 'Name', 'Age']].copy()
-women_survivors.to_csv('women_survivors_by_class.csv', index=False)
+women_survivors.to_csv(os.path.join(PROCESSED_DIR, 'women_survivors_by_class.csv'), index=False)
 print(f"Tabla women_survivors_by_class: {len(women_survivors)} registros")
 
 # TABLA 4: passengers_by_age_range
@@ -91,7 +97,7 @@ print(f"Tabla women_survivors_by_class: {len(women_survivors)} registros")
 # Partition key: AgeRange
 # Clustering key: Age, PassengerId
 passengers_by_age_range = df[['AgeRange', 'Age', 'PassengerId', 'Name', 'Sex', 'Pclass', 'Survived']].copy()
-passengers_by_age_range.to_csv('passengers_by_age_range.csv', index=False)
+passengers_by_age_range.to_csv(os.path.join(PROCESSED_DIR, 'passengers_by_age_range.csv'), index=False)
 print(f"Tabla passengers_by_age_range: {len(passengers_by_age_range)} registros")
 
 # TABLA 5: port_survival_analysis
@@ -99,7 +105,7 @@ print(f"Tabla passengers_by_age_range: {len(passengers_by_age_range)} registros"
 # Partition key: Embarked, Survived
 # Clustering key: PassengerId
 port_survival = df[['Embarked', 'Survived', 'PassengerId', 'Name', 'Pclass', 'Sex', 'Age']].copy()
-port_survival.to_csv('port_survival_analysis.csv', index=False)
+port_survival.to_csv(os.path.join(PROCESSED_DIR, 'port_survival_analysis.csv'), index=False)
 print(f"Tabla port_survival_analysis: {len(port_survival)} registros")
 
 # TABLA 6: class_age_survival_analysis
@@ -107,7 +113,7 @@ print(f"Tabla port_survival_analysis: {len(port_survival)} registros")
 # Partition key: AgeRange, Pclass
 # Clustering key: Survived, PassengerId
 class_age_survival = df[['AgeRange', 'Pclass', 'Survived', 'PassengerId', 'Name', 'Sex', 'Age']].copy()
-class_age_survival.to_csv('class_age_survival_analysis.csv', index=False)
+class_age_survival.to_csv(os.path.join(PROCESSED_DIR, 'class_age_survival_analysis.csv'), index=False)
 print(f"Tabla class_age_survival_analysis: {len(class_age_survival)} registros")
 
 print("\n✓ Todos los archivos CSV generados correctamente")
