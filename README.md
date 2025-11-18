@@ -63,8 +63,8 @@ Raw CSVs → Python Preprocessing → Integrated CSVs → Cassandra Tables → A
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/sebas80sebas/titanic-cassandra-model.git
-cd titanic-cassandra-model
+git clone https://github.com/sebas80sebas/cassandra-query-driven-design.git
+cd cassandra-query-driven-design
 ```
 
 2. **Install Python dependencies**
