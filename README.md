@@ -63,7 +63,7 @@ Raw CSVs → Python Preprocessing → Integrated CSVs → Cassandra Tables → A
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/titanic-cassandra-model.git
+git clone https://github.com/sebas80sebas/titanic-cassandra-model.git
 cd titanic-cassandra-model
 ```
 
