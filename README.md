@@ -72,11 +72,6 @@ cd cassandra-query-driven-design
 pip install -r requirements.txt
 ```
 
-3. **Start Cassandra** (if running locally)
-```bash
-cassandra -f
-```
-
 ## Usage
 
 ### Step 1: Preprocess Data
